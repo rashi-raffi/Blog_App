@@ -49,14 +49,42 @@
 
 
 // Request for adding a blog...!
-POST http://localhost:8000/api/blogs/new
-Content-Type: application/xml
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEsIlVzZXJOYW1lIjoiUmFzaGlSYXNoaSJ9.ilEg5zmMuPQLtxAHcACyAidaXJfL2TeKAGMLtaU8Tvc
+# POST http://localhost:8000/api/blogs/new
+# Content-Type: application/xml
+# Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjIsIlVzZXJOYW1lIjoicmFzaGlyYWZmaSJ9.Z2WH-CKu1rzvvKP3XqoBKc8KHBi9XhremvnNU8qAhlE
 
-{
-    "title" : "My First Blog..!",
-    "text" : "This is my first blog..!"
-}
+# {
+#     "title" : "My Second Blog..!",
+#     "text" : "This is my second blog..!"
+# }
+
+# GET http://localhost:8000/api/blog
+# Content-Type: application/xml
+# Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEsIlVzZXJOYW1lIjoiUmFzaGlSYXNoaSJ9.ilEg5zmMuPQLtxAHcACyAidaXJfL2TeKAGMLtaU8Tvc
+
+# {
+#     "blogID" : "2"
+# }
+
+# GET http://localhost:8000/api/me/blogs
+# Content-Type: application/xml
+# Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjIsIlVzZXJOYW1lIjoicmFzaGlyYWZmaSJ9.Z2WH-CKu1rzvvKP3XqoBKc8KHBi9XhremvnNU8qAhlE
 
 
 
+# POST http://localhost:8000/api/user/new 
+# content-type: application/json
+
+# {
+#     "email": "rashi.m@conver.com",
+#     "userName":"rashiraffi",
+#     "password": "Rashi123"
+# }
+
+# POST http://localhost:8000/api/user/login 
+# content-type: application/json
+
+# {
+#     "email": "rashi1281@gmail.com",
+#     "password": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
