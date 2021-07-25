@@ -1,6 +1,7 @@
 package main
 
 import (
+	"blog-app/app"
 	"blog-app/controllers"
 	"fmt"
 	"net/http"
@@ -15,7 +16,8 @@ func main() {
 
 	router.HandleFunc("/api/user/new", controllers.CreateAccount).Methods("POST")
 	router.HandleFunc("/api/user/login", controllers.Authenticate).Methods("POST")
-	//router.Use(app.JwtAuthentication) //attach JWT auth middleware
+	router.HandleFunc("/api/blogs/new", controllers.CreateBlog).Methods("POST")
+	router.Use(app.JwtAuthentication) //attach JWT auth middleware
 
 	//router.NotFoundHandler = app.NotFoundHandler
 
