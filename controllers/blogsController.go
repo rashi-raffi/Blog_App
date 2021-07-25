@@ -23,10 +23,25 @@ var CreateBlog = func(w http.ResponseWriter, r *http.Request) {
 	u.Respond(w, resp)
 }
 
-var GetContactsFor = func(w http.ResponseWriter, r *http.Request) {
+var GetBlogsFor = func(w http.ResponseWriter, r *http.Request) {
 
 	id := r.Context().Value("user").(uint)
-	data := models.GetContacts(id)
+	data := models.GetBlogs(id)
+	resp := u.Message(true, "success")
+	resp["data"] = data
+	u.Respond(w, resp)
+}
+
+var GetBlog = func(w http.ResponseWriter, r *http.Request) {
+	blog := &models.Blog{}
+	err := json.NewDecoder(r.Body).Decode(blog) //decode the request body into struct and failed if any error occur
+	if err != nil {
+		u.Respond(w, u.Message(false, err.Error()))
+		return
+	}
+	//id := r.Context().Value("id").(uint)
+	id := blog.BlogID
+	data := models.GetBlog(id)
 	resp := u.Message(true, "success")
 	resp["data"] = data
 	u.Respond(w, resp)
