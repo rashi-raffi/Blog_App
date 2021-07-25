@@ -1,14 +1,17 @@
 package models
 
 import (
+	u "blog-app/utils"
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 )
 
 type Blog struct {
 	gorm.Model
-	Title  string `json:"title"`
-	Text   string `json:"text"`
-	UserId uint   `json:"user_id"` //The user that this contact belongs to
+	Title  string `json:"title" gorm:"not null"`
+	Text   string `json:"text" gorm:"not null"`
+	UserId uint   `json:"userid" gorm:"not null"` //The user that this contact belongs to
 }
 
 /*
@@ -17,17 +20,17 @@ type Blog struct {
 returns message and true if the requirement is met
 */
 
-/* func (contact *Blog) Validate() (map[string]interface{}, bool) {
+func (blog *Blog) Validate() (map[string]interface{}, bool) {
 
-	if contact.Title == "" {
-		return u.Message(false, "Contact name should be on the payload"), false
+	if blog.Title == "" {
+		return u.Message(false, "Blog Title should be on the payload."), false
 	}
 
-	if contact.Text == "" {
-		return u.Message(false, "Phone number should be on the payload"), false
+	if blog.Text == "" {
+		return u.Message(false, "Blog text should be on the payload"), false
 	}
 
-	if contact.UserId <= 0 {
+	if blog.UserId <= 0 {
 		return u.Message(false, "User is not recognized"), false
 	}
 
@@ -69,4 +72,3 @@ func GetContacts(user uint) []*Blog {
 
 	return contacts
 }
-*/
