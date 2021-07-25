@@ -1,4 +1,27 @@
-// GET http://localhost:8000/api/user/new
+// GET http://localhost:8000/api/user/new.
+
+
+
+
+
+// USER DETAILS. "password": "Rashi123"
+# {
+#   "account": {
+#     "ID": 1,
+#     "CreatedAt": "2021-07-25T22:27:19.7830598+05:30",
+#     "UpdatedAt": "2021-07-25T22:27:19.7830598+05:30",
+#     "DeletedAt": null,
+#     "email": "rashi1281@gmail.com",
+#     "userName": "RashiRashi",
+#     "password": "",
+#     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEsIlVzZXJOYW1lIjoiUmFzaGlSYXNoaSJ9.ilEg5zmMuPQLtxAHcACyAidaXJfL2TeKAGMLtaU8Tvc"
+#   },
+#   "message": "Account has been created",
+#   "status": true
+# }
+
+
+
 
 // Request to create a user...!
 
@@ -8,8 +31,11 @@
 # {
 #     "email": "rashi1281@gmail.com",
 #     "userName":"RashiRashi",
-#     "password": "Wed, 21 Oct 2015 18:27:50 GMT"
+#     "password": "Rashi123"
 # }
+
+
+
 
 // Request for login...!
 
@@ -20,3 +46,17 @@
 #     "email": "rashi1281@gmail.com",
 #     "password": "Wed, 21 Oct 2015 18:27:50 GMT"
 # }
+
+
+// Request for adding a blog...!
+POST http://localhost:8000/api/blogs/new
+Content-Type: application/xml
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEsIlVzZXJOYW1lIjoiUmFzaGlSYXNoaSJ9.ilEg5zmMuPQLtxAHcACyAidaXJfL2TeKAGMLtaU8Tvc
+
+{
+    "title" : "My First Blog..!",
+    "text" : "This is my first blog..!"
+}
+
+
+
