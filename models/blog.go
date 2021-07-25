@@ -9,6 +9,7 @@ import (
 
 type Blog struct {
 	gorm.Model
+	BlogID string `json:"blogID" gorm:"-"`
 	Title  string `json:"title" gorm:"not null"`
 	Text   string `json:"text" gorm:"not null"`
 	UserId uint   `json:"userid" gorm:"not null"` //The user that this contact belongs to
@@ -51,24 +52,24 @@ func (blog *Blog) Create() map[string]interface{} {
 	return resp
 }
 
-func GetContact(id uint) *Blog {
+func GetBlog(id string) *Blog {
 
-	contact := &Blog{}
-	err := GetDB().Table("contacts").Where("id = ?", id).First(contact).Error
+	blog := &Blog{}
+	err := GetDB().Table("blogs").Where("id = ?", id).First(blog).Error
 	if err != nil {
 		return nil
 	}
-	return contact
+	return blog
 }
 
-func GetContacts(user uint) []*Blog {
+func GetBlogs(user uint) []*Blog {
 
-	contacts := make([]*Blog, 0)
-	err := GetDB().Table("contacts").Where("user_id = ?", user).Find(&contacts).Error
+	blogs := make([]*Blog, 0)
+	err := GetDB().Table("blogs").Where("user_id = ?", user).Find(&blogs).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
 
-	return contacts
+	return blogs
 }
