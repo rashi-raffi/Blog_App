@@ -14,17 +14,19 @@ import (
 JWT claims struct
 */
 type Token struct {
-	UserId uint
+	UserId   uint
+	UserName string
 	jwt.StandardClaims
 }
 
 //a struct to rep user account
 type Account struct {
 	gorm.Model
-	Email    string `json:"email"`
-	User_id  string `json:"-"`
-	Password string `json:"password"`
-	Token    string `json:"token";sql:"-"`
+	User_id  int    `json:"userID" gorm:"-"`
+	Email    string `json:"email" gorm:"not null"`
+	Name     string `json:"userName" gorm:"not null"`
+	Password string `json:"password" gorm:"not null"`
+	Token    string `json:"token" gorm:"-"`
 }
 
 //Validate incoming user details...
@@ -32,6 +34,10 @@ func (account *Account) Validate() (map[string]interface{}, bool) {
 
 	if !strings.Contains(account.Email, "@") {
 		return u.Message(false, "Email address is required"), false
+	}
+
+	if len(account.Name) < 4 {
+		return u.Message(false, "Name is required(Min Length 4 char!)"), false
 	}
 
 	if len(account.Password) < 6 {
@@ -69,7 +75,7 @@ func (account *Account) Create() map[string]interface{} {
 	}
 
 	//Create new JWT token for the newly registered account
-	tk := &Token{UserId: account.ID}
+	tk := &Token{UserId: account.ID, UserName: account.Name}
 	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), tk)
 	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
 	account.Token = tokenString
@@ -100,7 +106,7 @@ func Login(email, password string) map[string]interface{} {
 	account.Password = ""
 
 	//Create JWT token
-	tk := &Token{UserId: account.ID}
+	tk := &Token{UserId: account.ID, UserName: account.Name}
 	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), tk)
 	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
 	account.Token = tokenString //Store the token in the response
