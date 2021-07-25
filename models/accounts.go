@@ -22,7 +22,6 @@ type Token struct {
 //a struct to rep user account
 type Account struct {
 	gorm.Model
-	User_id  int    `json:"userID" gorm:"-"`
 	Email    string `json:"email" gorm:"not null"`
 	Name     string `json:"userName" gorm:"not null"`
 	Password string `json:"password" gorm:"not null"`
