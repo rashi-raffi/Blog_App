@@ -21,7 +21,7 @@ func main() {
 	router.HandleFunc("/api/me/blogs", controllers.GetBlogsFor).Methods("GET")
 	router.Use(app.JwtAuthentication) //attach JWT auth middleware
 
-	//router.NotFoundHandler = app.NotFoundHandler
+	router.NotFoundHandler = app.NotFoundHandler(router)
 
 	port := os.Getenv("PORT")
 	if port == "" {
