@@ -1,8 +1,22 @@
 // GET http://localhost:8000/api/user/new
-POST http://localhost:8000/api/user/new 
-content-type: application/json
 
-{
-    "email": "rashi1281@gmail.com",
-    "password": "Wed, 21 Oct 2015 18:27:50 GMT"
-}
+// Request to create a user...!
+
+# POST http://localhost:8000/api/user/new 
+# content-type: application/json
+
+# {
+#     "email": "rashi1281@gmail.com",
+#     "userName":"RashiRashi",
+#     "password": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
+
+// Request for login...!
+
+# POST http://localhost:8000/api/user/login 
+# content-type: application/json
+
+# {
+#     "email": "rashi1281@gmail.com",
+#     "password": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
