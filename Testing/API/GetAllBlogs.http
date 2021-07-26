@@ -1,5 +1,5 @@
 // Request to get all the blogs.
 
 GET http://localhost:8000/api/me/blogs
-Content-Type: application/xml
+Content-Type: application/json
 Authorization: token 

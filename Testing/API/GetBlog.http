@@ -1,7 +1,7 @@
 // Request to get a blog
 
 GET http://localhost:8000/api/blog
-Content-Type: application/xml
+Content-Type: application/json
 Authorization: token 
 
 {

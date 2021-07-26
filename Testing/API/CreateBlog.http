@@ -2,7 +2,7 @@
 
 
 POST http://localhost:8000/api/blogs/new
-Content-Type: application/xml
+Content-Type: application/json
 Authorization: token 
 
 {
