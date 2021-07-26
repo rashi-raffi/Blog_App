@@ -14,13 +14,25 @@ func main() {
 
 	router := mux.NewRouter()
 
+	// Handle request for creating a new user.
 	router.HandleFunc("/api/user/new", controllers.CreateAccount).Methods("POST")
-	router.HandleFunc("/api/user/login", controllers.Authenticate).Methods("POST")
-	router.HandleFunc("/api/blogs/new", controllers.CreateBlog).Methods("POST")
-	router.HandleFunc("/api/blog", controllers.GetBlog).Methods("GET")
-	router.HandleFunc("/api/me/blogs", controllers.GetBlogsFor).Methods("GET")
-	router.Use(app.JwtAuthentication) //attach JWT auth middleware
 
+	// Handle request for login.
+	router.HandleFunc("/api/user/login", controllers.Authenticate).Methods("POST")
+
+	// Handle request for creating a new user.
+	router.HandleFunc("/api/blogs/new", controllers.CreateBlog).Methods("POST")
+
+	// Handle request for fetching a single blog.
+	router.HandleFunc("/api/blog", controllers.GetBlog).Methods("GET")
+
+	// Handle request for fetching all the blogs of a user.
+	router.HandleFunc("/api/me/blogs", controllers.GetBlogsFor).Methods("GET")
+
+	//Attach JWT auth middleware.
+	router.Use(app.JwtAuthentication)
+
+	// Resource not found handler.
 	router.NotFoundHandler = app.NotFoundHandler(router)
 
 	port := os.Getenv("PORT")
