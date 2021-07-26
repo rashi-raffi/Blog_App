@@ -1,0 +1,10 @@
+// Request to create a user...!
+
+POST http://localhost:8000/api/user/new 
+content-type: application/json
+
+{
+    "email": "",
+    "userName":"",
+    "password": ""
+}
