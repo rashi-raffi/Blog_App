@@ -8,11 +8,18 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 func main() {
 
-	router := mux.NewRouter()
+	router := mux.NewRouter().StrictSlash(true)
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"},
+		AllowCredentials: true,
+	})
+
+	handler := c.Handler(router)
 
 	// Handle request for creating a new user.
 	router.HandleFunc("/api/user/new", controllers.CreateAccount).Methods("POST")
@@ -42,7 +49,7 @@ func main() {
 
 	fmt.Println(port)
 
-	err := http.ListenAndServe(":"+port, router) //Launch the app, visit localhost:8000/api
+	err := http.ListenAndServe(":"+port, handler) //Launch the app, visit localhost:8000/api
 	if err != nil {
 		fmt.Print(err)
 	}
