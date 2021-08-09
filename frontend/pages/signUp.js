@@ -30,6 +30,20 @@ class SignUp extends Component {
         };
     }
 
+    isTokenValid = () => {
+      const token = localStorage.getItem("token")
+      if(token){
+        console.log(token)
+        router.push('/blogs')
+      }
+    }
+
+
+    async componentDidMount() {
+      this.isTokenValid()
+    }
+    
+
 
     render(){
         return(
