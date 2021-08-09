@@ -8,7 +8,6 @@ import (
 )
 
 var CreateAccount = func(w http.ResponseWriter, r *http.Request) {
-
 	account := &models.Account{}
 	err := json.NewDecoder(r.Body).Decode(account) //decode the request body into struct and failed if any error occur
 	if err != nil {
@@ -17,6 +16,11 @@ var CreateAccount = func(w http.ResponseWriter, r *http.Request) {
 	}
 
 	resp := account.Create() //Create account
+
+	// tkn := resp["token"].(string)
+	// cookie := http.Cookie{Name: "token", Value: tkn}
+	// http.SetCookie(w, &cookie)
+
 	u.Respond(w, resp)
 }
 
@@ -30,5 +34,10 @@ var Authenticate = func(w http.ResponseWriter, r *http.Request) {
 	}
 
 	resp := models.Login(account.Email, account.Password)
+
+	// tkn := resp["token"].(string)
+	// cookie := http.Cookie{Name: "token", Value: tkn}
+	// http.SetCookie(w, &cookie)
+
 	u.Respond(w, resp)
 }
