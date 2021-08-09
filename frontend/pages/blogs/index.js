@@ -14,14 +14,13 @@ class Blogs extends Component {
     isTokenValid = () => {
         if(typeof window !== "undefined" && window.localStorage){
             const tkn = localStorage.getItem("token")
-            if(tkn !== "undefined"){
+            if(tkn){
                 this.setState({ token : tkn })
             }
             else{
-                localStorage.clear();
+                localStorage.clear()
                 router.push('/SignIn')
             }
-            
         }
         else{
             router.push("/SignIn")
