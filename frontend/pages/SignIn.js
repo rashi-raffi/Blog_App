@@ -28,8 +28,8 @@ class SignIn extends Component {
             password: this.state.password
           });
           if (response.data.status) {
-            localStorage.setItem("token", response.data.token)
-            router.push('/SignIn')
+            localStorage.setItem("token", response.data.account.token)
+            router.push('/blogs')
           }
         } catch (error) {
           console.log(error);
@@ -51,7 +51,7 @@ class SignIn extends Component {
                   <input type="password" placeholder="Password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })}  /><br />
                   <input type="submit" value="Submit" />
                   <div >
-                    <p>Already Registered?<br/><Link href="/SignIn"><a>Signin</a></Link></p>
+                    <p>Not Already ?<br/><Link href="/SignUp"><a>Signin</a></Link></p>
                   </div>
               </form>
           </div>
