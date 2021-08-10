@@ -44,49 +44,144 @@ class SignUp extends Component {
         this.isTokenValid();
     }
 
+    // render() {
+    //     return (
+    //         <div>
+    //             <p>Sign Up with Password</p>
+    //             <form onSubmit={this.onFormSubmit}>
+    //                 <input
+    //                     type="text"
+    //                     placeholder="Name Name"
+    //                     value={this.state.userName}
+    //                     onChange={(e) =>
+    //                         this.setState({ userName: e.target.value })
+    //                     }
+    //                 />
+    //                 <br />
+    //                 <input
+    //                     type="text"
+    //                     placeholder="Email id"
+    //                     value={this.state.email}
+    //                     onChange={(e) =>
+    //                         this.setState({ email: e.target.value })
+    //                     }
+    //                 />
+    //                 <br />
+    //                 <input
+    //                     type="password"
+    //                     placeholder="Password"
+    //                     value={this.state.password}
+    //                     onChange={(e) =>
+    //                         this.setState({ password: e.target.value })
+    //                     }
+    //                 />
+    //                 <br />
+    //                 <input type="submit" value="Submit" />
+    //                 <div>
+    //                     <p>
+    //                         Already Registered?
+    //                         <br />
+    //                         <Link href="/SignIn">
+    //                             <a>Signin</a>
+    //                         </Link>
+    //                     </p>
+    //                 </div>
+    //             </form>
+    //         </div>
+    //     );
+    // }
+
     render() {
         return (
-            <div>
-                <p>Sign Up with Password</p>
-                <form onSubmit={this.onFormSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Name Name"
-                        value={this.state.userName}
-                        onChange={(e) =>
-                            this.setState({ userName: e.target.value })
-                        }
-                    />
-                    <br />
-                    <input
-                        type="text"
-                        placeholder="Email id"
-                        value={this.state.email}
-                        onChange={(e) =>
-                            this.setState({ email: e.target.value })
-                        }
-                    />
-                    <br />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={(e) =>
-                            this.setState({ password: e.target.value })
-                        }
-                    />
-                    <br />
-                    <input type="submit" value="Submit" />
-                    <div>
-                        <p>
-                            Already Registered?
-                            <br />
+            <div
+                className="ui container"
+                style={{
+                    margin: "auto",
+                    marginTop: "10%",
+                    width: "60%",
+                    padding: "10px",
+                }}
+            >
+                <div className="ui placeholder segment">
+                    <div className="ui two column very relaxed stackable grid">
+                        <div className="column">
+                            <form
+                                onSubmit={this.onFormSubmit}
+                                className="ui form"
+                            >
+                                <div className="field">
+                                    <label>Username</label>
+                                    <div className="ui left icon input">
+                                        <input
+                                            type="text"
+                                            placeholder="User Name"
+                                            value={this.state.userName}
+                                            onChange={(e) =>
+                                                this.setState({
+                                                    userName: e.target.value,
+                                                })
+                                            }
+                                        />
+                                        <i className="user icon"></i>
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <label>Email</label>
+                                    <div className="ui left icon input">
+                                        <input
+                                            type="text"
+                                            placeholder="Email"
+                                            value={this.state.email}
+                                            onChange={(e) =>
+                                                this.setState({
+                                                    email: e.target.value,
+                                                })
+                                            }
+                                        />
+                                        <i className="mail icon"></i>
+                                    </div>
+                                </div>
+                                <div className="field">
+                                    <label>Password</label>
+                                    <div className="ui left icon input">
+                                        <input
+                                            type="password"
+                                            placeholder="Password"
+                                            value={this.state.password}
+                                            onChange={(e) =>
+                                                this.setState({
+                                                    password: e.target.value,
+                                                })
+                                            }
+                                        />
+                                        <i className="lock icon"></i>
+                                    </div>
+                                </div>
+                                <input
+                                    className="ui blue submit button"
+                                    type="submit"
+                                    value="Sign Up"
+                                />
+                            </form>
+                        </div>
+                        <div className="middle aligned column">
+                            <p
+                                style={{
+                                    textAlign: "center",
+                                }}
+                            >
+                                Already Have an account ?
+                            </p>
                             <Link href="/SignIn">
-                                <a>Signin</a>
+                                <div className="ui big button">
+                                    <i className="signup icon"></i>
+                                    Sign In
+                                </div>
                             </Link>
-                        </p>
+                        </div>
                     </div>
-                </form>
+                    <div className="ui vertical divider">Or</div>
+                </div>
             </div>
         );
     }
