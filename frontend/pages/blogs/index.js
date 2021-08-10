@@ -101,13 +101,6 @@ class Blogs extends Component {
     render() {
         return (
             <div className="ui container" style={{ marginTop: "20px" }}>
-                <div>
-                    <button>
-                        <a onClick={this.logOut} href="/SignIn" class="ui item">
-                            Logout
-                        </a>
-                    </button>
-                </div>
                 <form onSubmit={this.onFormSubmit} className="ui form error">
                     <div className="field">
                         <label htmlFor="BlogTitle">Title</label>
@@ -139,8 +132,27 @@ class Blogs extends Component {
                         <SuccessMessage message={this.state.succMsg} />
                     )}
                 </form>
-                <div>
+                <div style={{ marginTop: "70px" }}>
+                    <h2 className="ui header">
+                        <i className="book icon"></i>
+                        <div className="content">My Blogs</div>
+                    </h2>
                     <BlogPost blogs={this.state.blogs} />
+                </div>
+                <div style={{ marginTop: "15px" }}>
+                    <a
+                        onClick={this.logOut}
+                        href="/SignIn"
+                        style={{ fontSize: "20px" }}
+                        class="ui item"
+                    >
+                        <button
+                            class="ui inverted red button"
+                            style={{ width: "100%" }}
+                        >
+                            Logout
+                        </button>
+                    </a>
                 </div>
             </div>
         );
