@@ -1,9 +1,7 @@
 import SignUp from "./signUp";
 
 const Home = () => {
-    return ( 
-        <SignUp/>
-     );
-}
- 
+    return <SignUp />;
+};
+
 export default Home;
