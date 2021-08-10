@@ -89,6 +89,11 @@ class Blogs extends Component {
         this.isTokenValid();
     }
 
+    logOut() {
+        localStorage.clear();
+        router.push("/SignIn");
+    }
+
     componentDidUpdate() {
         console.log("Rerendered.");
     }
@@ -96,6 +101,13 @@ class Blogs extends Component {
     render() {
         return (
             <div className="ui container" style={{ marginTop: "20px" }}>
+                <div>
+                    <button>
+                        <a onClick={this.logOut} href="/SignIn" class="ui item">
+                            Logout
+                        </a>
+                    </button>
+                </div>
                 <form onSubmit={this.onFormSubmit} className="ui form error">
                     <div className="field">
                         <label htmlFor="BlogTitle">Title</label>
