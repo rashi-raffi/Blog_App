@@ -44,53 +44,6 @@ class SignUp extends Component {
         this.isTokenValid();
     }
 
-    // render() {
-    //     return (
-    //         <div>
-    //             <p>Sign Up with Password</p>
-    //             <form onSubmit={this.onFormSubmit}>
-    //                 <input
-    //                     type="text"
-    //                     placeholder="Name Name"
-    //                     value={this.state.userName}
-    //                     onChange={(e) =>
-    //                         this.setState({ userName: e.target.value })
-    //                     }
-    //                 />
-    //                 <br />
-    //                 <input
-    //                     type="text"
-    //                     placeholder="Email id"
-    //                     value={this.state.email}
-    //                     onChange={(e) =>
-    //                         this.setState({ email: e.target.value })
-    //                     }
-    //                 />
-    //                 <br />
-    //                 <input
-    //                     type="password"
-    //                     placeholder="Password"
-    //                     value={this.state.password}
-    //                     onChange={(e) =>
-    //                         this.setState({ password: e.target.value })
-    //                     }
-    //                 />
-    //                 <br />
-    //                 <input type="submit" value="Submit" />
-    //                 <div>
-    //                     <p>
-    //                         Already Registered?
-    //                         <br />
-    //                         <Link href="/SignIn">
-    //                             <a>Signin</a>
-    //                         </Link>
-    //                     </p>
-    //                 </div>
-    //             </form>
-    //         </div>
-    //     );
-    // }
-
     render() {
         return (
             <div

@@ -43,43 +43,6 @@ class SignIn extends Component {
         this.isTokenValid();
     }
 
-    // render() {
-    //     return (
-    //         <div>
-    //             <p>Sign In </p>
-    //             <form onSubmit={this.onFormSubmit}>
-    //                 <input
-    //                     type="text"
-    //                     placeholder="Email id"
-    //                     value={this.state.email}
-    //                     onChange={(e) =>
-    //                         this.setState({ email: e.target.value })
-    //                     }
-    //                 />
-    //                 <br />
-    //                 <input
-    //                     type="password"
-    //                     placeholder="Password"
-    //                     value={this.state.password}
-    //                     onChange={(e) =>
-    //                         this.setState({ password: e.target.value })
-    //                     }
-    //                 />
-    //                 <br />
-    //                 <input type="submit" value="Submit" />
-    //                 <div>
-    //                     <p>
-    //                         Not Already ?<br />
-    //                         <Link href="/SignUp">
-    //                             <a>Signin</a>
-    //                         </Link>
-    //                     </p>
-    //                 </div>
-    //             </form>
-    //         </div>
-    //     );
-    // }
-
     render() {
         return (
             <div
