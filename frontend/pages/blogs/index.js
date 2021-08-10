@@ -3,6 +3,8 @@ import router from "next/router";
 import Link from "next/link";
 import axios from "axios";
 import BlogPost from "../../components/posts";
+import ErrorMessage from "../../components/error";
+import SuccessMessage from "../../components/success";
 
 class Blogs extends Component {
     state = {
@@ -10,6 +12,8 @@ class Blogs extends Component {
         title: "",
         blogContent: "",
         blogs: [],
+        errMsg: "",
+        succMsg: "",
     };
 
     isTokenValid = () => {
@@ -44,10 +48,16 @@ class Blogs extends Component {
             );
             if (response.data.status) {
                 console.log("Blog Added..!");
-                this.setState({ title: "", blogContent: "" });
+                this.setState({
+                    title: "",
+                    blogContent: "",
+                    succMsg: response.data.message,
+                    errMsg: "",
+                });
                 this.getBlog(this.state.token);
             } else {
                 console.log(response.data.message);
+                this.setState({ errMsg: response.data.message });
             }
         } catch (error) {
             console.log(error);
@@ -85,28 +95,37 @@ class Blogs extends Component {
 
     render() {
         return (
-            <div>
-                <p>Add Blogs</p>
-                <form onSubmit={this.onFormSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Title"
-                        value={this.state.title}
-                        onChange={(e) =>
-                            this.setState({ title: e.target.value })
-                        }
-                    />
-                    <br />
-                    <input
-                        type="text"
-                        placeholder="Content"
-                        value={this.state.blogContent}
-                        onChange={(e) =>
-                            this.setState({ blogContent: e.target.value })
-                        }
-                    />
-                    <br />
-                    <input type="submit" value="Submit" />
+            <div className="ui container" style={{ marginTop: "20px" }}>
+                <form onSubmit={this.onFormSubmit} className="ui form error">
+                    <div className="field">
+                        <label htmlFor="BlogTitle">Title</label>
+                        <input
+                            type="text"
+                            id="BlogTitle"
+                            placeholder="Title"
+                            value={this.state.title}
+                            onChange={(e) =>
+                                this.setState({ title: e.target.value })
+                            }
+                        />
+                    </div>
+                    <div className="field">
+                        <label>Text</label>
+                        <textarea
+                            type="text"
+                            placeholder="Content"
+                            value={this.state.blogContent}
+                            onChange={(e) =>
+                                this.setState({ blogContent: e.target.value })
+                            }
+                        />
+                    </div>
+                    <input type="submit" className="ui button" value="Submit" />
+                    {this.state.errMsg ? (
+                        <ErrorMessage message={this.state.errMsg} />
+                    ) : (
+                        <SuccessMessage message={this.state.succMsg} />
+                    )}
                 </form>
                 <div>
                     <BlogPost blogs={this.state.blogs} />
