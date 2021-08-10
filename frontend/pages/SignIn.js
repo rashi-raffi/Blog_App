@@ -119,6 +119,7 @@ class SignIn extends Component {
                                     <div className="ui left icon input">
                                         <input
                                             type="password"
+                                            placeholder="Password"
                                             value={this.state.password}
                                             onChange={(e) =>
                                                 this.setState({
@@ -137,6 +138,13 @@ class SignIn extends Component {
                             </form>
                         </div>
                         <div className="middle aligned column">
+                            <p
+                                style={{
+                                    textAlign: "center",
+                                }}
+                            >
+                                New to us ?
+                            </p>
                             <Link href="/signUp">
                                 <div className="ui big button">
                                     <i className="signup icon"></i>
